@@ -6,13 +6,13 @@ import {
   CalendarIcon,
   ShoppingBagIcon,
   CubeIcon,
-  ClipboardListIcon,
   CogIcon,
   TruckIcon,
   UserGroupIcon,
   ChevronLeftIcon,
-  ChevronRightIcon
-} from '@heroicons/react/outline';
+  ChevronRightIcon,
+  DocumentTextIcon
+} from '@heroicons/react/24/outline';
 import { useTheme } from '../../context/ThemeContext';
 import { useAuth } from '../../context/AuthContext';
 
@@ -28,7 +28,7 @@ const Sidebar: React.FC = () => {
     { name: 'Pets', path: '/pets', icon: CubeIcon, access: ['ADMIN', 'STAFF'] },
     { name: 'Appointments', path: '/appointments', icon: CalendarIcon, access: ['ADMIN', 'STAFF'] },
     { name: 'Products', path: '/products', icon: ShoppingBagIcon, access: ['ADMIN', 'STAFF'] },
-    { name: 'Services', path: '/services', icon: ClipboardListIcon, access: ['ADMIN', 'STAFF'] },
+    { name: 'Services', path: '/services', icon: DocumentTextIcon, access: ['ADMIN', 'STAFF'] },
     { name: 'Orders', path: '/orders', icon: ShoppingBagIcon, access: ['ADMIN', 'STAFF'] },
     { name: 'Inventory', path: '/inventory', icon: CubeIcon, access: ['ADMIN'] },
     { name: 'Suppliers', path: '/suppliers', icon: TruckIcon, access: ['ADMIN'] },

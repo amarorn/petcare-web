@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
 import Card from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
-import { PlusIcon, PencilIcon, TrashIcon, SearchIcon } from '@heroicons/react/outline';
-import { Customer } from '../../types';
+import { PlusIcon, PencilIcon, TrashIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { Customer, UserRole, PetSpecies } from '../../types';
 
 const CustomerList: React.FC = () => {
   const { theme } = useTheme();
@@ -30,7 +30,7 @@ const CustomerList: React.FC = () => {
             id: `u-${i + 1}`,
             email: `customer${i + 1}@example.com`,
             name: `Customer ${i + 1}`,
-            role: 'CUSTOMER',
+            role: UserRole.CUSTOMER,
             createdAt: new Date(Date.now() - Math.floor(Math.random() * 10000000000)),
             updatedAt: new Date()
           },
@@ -38,7 +38,7 @@ const CustomerList: React.FC = () => {
             id: `p-${i}-${j}`,
             customerId: `c-${i + 1}`,
             name: `Pet ${j + 1}`,
-            species: ['DOG', 'CAT', 'BIRD', 'FISH', 'REPTILE', 'SMALL_MAMMAL', 'OTHER'][Math.floor(Math.random() * 7)],
+            species: [PetSpecies.DOG, PetSpecies.CAT, PetSpecies.BIRD, PetSpecies.FISH, PetSpecies.REPTILE, PetSpecies.SMALL_MAMMAL, PetSpecies.OTHER][Math.floor(Math.random() * 7)],
             breed: `Breed ${j + 1}`,
             birthDate: new Date(Date.now() - Math.floor(Math.random() * 315360000000)), // Random date within last 10 years
             weight: Math.floor(1 + Math.random() * 50),
@@ -88,7 +88,7 @@ const CustomerList: React.FC = () => {
       <Card className="mb-6">
         <div className="relative">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <SearchIcon className="h-5 w-5 text-gray-400" />
+            <MagnifyingGlassIcon className="h-5 w-5 text-gray-400" />
           </div>
           <input
             type="text"

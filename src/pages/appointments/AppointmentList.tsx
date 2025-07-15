@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
 import Card from '../../components/ui/Card';
 import Button from '../../components/ui/Button';
-import { PlusIcon, PencilIcon, TrashIcon, SearchIcon, FilterIcon } from '@heroicons/react/outline';
-import { Appointment, AppointmentStatus } from '../../types';
+import { PlusIcon, PencilIcon, TrashIcon, MagnifyingGlassIcon, FunnelIcon } from '@heroicons/react/24/outline';
+import { Appointment, AppointmentStatus, UserRole, PetSpecies, ServiceCategory } from '../../types';
 
 const statusColors: Record<AppointmentStatus, string> = {
   SCHEDULED: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
@@ -42,7 +42,7 @@ const AppointmentList: React.FC = () => {
               id: `p-${i % 5 + 1}`,
               customerId: `c-${i % 5 + 1}`,
               name: `Pet ${i % 5 + 1}`,
-              species: ['DOG', 'CAT', 'BIRD', 'FISH', 'REPTILE'][i % 5],
+              species: [PetSpecies.DOG, PetSpecies.CAT, PetSpecies.BIRD, PetSpecies.FISH, PetSpecies.REPTILE][i % 5],
               breed: `Breed ${i % 3 + 1}`,
               birthDate: new Date(Date.now() - Math.floor(Math.random() * 315360000000)),
               weight: Math.floor(5 + Math.random() * 20),
@@ -60,7 +60,7 @@ const AppointmentList: React.FC = () => {
                   id: `u-${i % 5 + 1}`,
                   email: `customer${i % 5 + 1}@example.com`,
                   name: `Customer ${i % 5 + 1}`,
-                  role: 'CUSTOMER',
+                  role: UserRole.CUSTOMER,
                   createdAt: new Date(),
                   updatedAt: new Date()
                 }
@@ -71,7 +71,7 @@ const AppointmentList: React.FC = () => {
               id: `s-${i % 3 + 1}`,
               name: ['Grooming', 'Vaccination', 'Check-up'][i % 3],
               description: `Service description ${i % 3 + 1}`,
-              category: ['GROOMING', 'VETERINARY', 'TRAINING'][i % 3],
+              category: [ServiceCategory.GROOMING, ServiceCategory.VETERINARY, ServiceCategory.TRAINING][i % 3],
               price: 25 + (i % 3) * 15,
               duration: 30 + (i % 3) * 15,
               createdAt: new Date(),
@@ -135,7 +135,7 @@ const AppointmentList: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-center space-y-4 md:space-y-0 md:space-x-4">
           <div className="relative flex-1">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <SearchIcon className="h-5 w-5 text-gray-400" />
+              <MagnifyingGlassIcon className="h-5 w-5 text-gray-400" />
             </div>
             <input
               type="text"
@@ -150,7 +150,7 @@ const AppointmentList: React.FC = () => {
             />
           </div>
           <div className="flex items-center">
-            <FilterIcon className="h-5 w-5 text-gray-400 mr-2" />
+            <FunnelIcon className="h-5 w-5 text-gray-400 mr-2" />
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value as AppointmentStatus | 'ALL')}

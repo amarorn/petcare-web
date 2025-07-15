@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTheme } from '../../context/ThemeContext';
 import { useAuth } from '../../context/AuthContext';
-import { MoonIcon, SunIcon, BellIcon, UserCircleIcon, MenuIcon } from '@heroicons/react/outline';
+import { MoonIcon, SunIcon, BellIcon, UserCircleIcon, Bars3Icon } from '@heroicons/react/24/outline';
 
 interface HeaderProps {
   toggleMobileSidebar: () => void;
@@ -21,7 +21,7 @@ const Header: React.FC<HeaderProps> = ({ toggleMobileSidebar }) => {
             onClick={toggleMobileSidebar}
             className="block sm:hidden p-2 rounded-md mr-2"
           >
-            <MenuIcon className="h-6 w-6" />
+            <Bars3Icon className="h-6 w-6" />
           </button>
           <h1 className="text-lg font-semibold">Pet Shop Management</h1>
         </div>

@@ -9,9 +9,10 @@ import {
   CalendarIcon, 
   ShoppingBagIcon, 
   CurrencyDollarIcon, 
-  TrendingUpIcon 
-} from '@heroicons/react/outline';
+  ArrowTrendingUpIcon 
+} from '@heroicons/react/24/outline';
 import { DashboardStats, ChartData } from '../types';
+import { ApexOptions } from 'apexcharts';
 
 const Dashboard: React.FC = () => {
   const { theme } = useTheme();
@@ -64,7 +65,6 @@ const Dashboard: React.FC = () => {
     }],
     options: {
       chart: {
-        type: 'area',
         height: 350,
         toolbar: {
           show: false
@@ -76,7 +76,7 @@ const Dashboard: React.FC = () => {
         enabled: false
       },
       stroke: {
-        curve: 'smooth',
+        curve: 'smooth' as const,
         width: 2
       },
       xaxis: {
@@ -104,7 +104,7 @@ const Dashboard: React.FC = () => {
       theme: {
         mode: isDark ? 'dark' : 'light'
       }
-    }
+    } as ApexOptions
   };
   
   const salesByCategory: ChartData = {
@@ -112,9 +112,8 @@ const Dashboard: React.FC = () => {
     labels: ['Food', 'Accessories', 'Toys', 'Medicine', 'Grooming']
   };
   
-  const salesByCategoryOptions = {
+  const salesByCategoryOptions: ApexOptions = {
     chart: {
-      type: 'pie',
       background: 'transparent',
       foreColor: isDark ? '#fff' : '#000'
     },
@@ -155,7 +154,7 @@ const Dashboard: React.FC = () => {
     <div>
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-semibold">Dashboard</h1>
-        <Button icon={<TrendingUpIcon className="h-4 w-4" />}>
+        <Button icon={<ArrowTrendingUpIcon className="h-4 w-4" />}>
           Generate Report
         </Button>
       </div>
